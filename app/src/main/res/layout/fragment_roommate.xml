@@ -41,7 +41,7 @@
             app:layout_constraintTop_toBottomOf="@id/match_text" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/match_button_skip"
+            android:id="@+id/match_button_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"

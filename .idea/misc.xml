@@ -3,10 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.227" />
+        <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/activity_home.xml" value="0.3625" />
+        <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/activity_login.xml" value="0.3625" />
         <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
+        <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/dropdown_item.xml" value="0.3625" />
+        <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/fragment_login.xml" value="0.3625" />
+        <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/fragment_login_error.xml" value="0.3625" />
         <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/fragment_match.xml" value="0.3625" />
         <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/fragment_onboarding.xml" value="0.3625" />
+        <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/fragment_register.xml" value="0.3625" />
         <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/fragment_roommate.xml" value="0.3625" />
+        <entry key="..\:/Users/Raul/AndroidStudioProjects/Ejercicio7ViewPager/app/src/main/res/layout/fragment_wip.xml" value="0.3625" />
       </map>
     </option>
   </component>

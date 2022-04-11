@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import es.travelworld.ejercicio7_viewpager.databinding.ActivityMainBinding;
@@ -17,7 +18,7 @@ import es.travelworld.ejercicio7_viewpager.fragments.MatchFragment;
 import es.travelworld.ejercicio7_viewpager.fragments.OnBoardingFragment;
 import es.travelworld.ejercicio7_viewpager.fragments.RoommateFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnBoardingFragment.OnClickItemOnBoardingFragment, MatchFragment.OnClickItemMatchFragment, RoommateFragment.OnClickItemRoommateFragment {
 
     private ActivityMainBinding binding;
 
@@ -42,7 +43,35 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBoardingNextButton() {
+        binding.viewPager.setCurrentItem(binding.viewPager.getCurrentItem() + 1);
+    }
+
+    @Override
+    public void matchNextButton() {
+        binding.viewPager.setCurrentItem(binding.viewPager.getCurrentItem() + 1);
+    }
+
+    @Override
+    public void matchSkipButton() {
+        launchLoginActivity();
+    }
+
+    @Override
+    public void roommateLoginButton() {
+        launchLoginActivity();
+    }
+
+    private void launchLoginActivity() {
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
+    }
+
     private class MainActivityFragmentStateAdapter extends FragmentStateAdapter {
+
+        //TODO: Gestión de la pila de fragmentos
+
         public MainActivityFragmentStateAdapter(MainActivity mainActivity) {
             super(mainActivity);
         }
