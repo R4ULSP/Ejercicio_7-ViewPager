@@ -10,17 +10,17 @@ import android.view.ViewGroup;
 
 import es.travelworld.ejercicio7_viewpager.databinding.FragmentOnboardingBinding;
 
-public class OnboardingFragment extends Fragment {
+public class OnBoardingFragment extends Fragment {
 
     private FragmentOnboardingBinding binding;
 
-    public OnboardingFragment() {
+    public OnBoardingFragment() {
         // Required empty public constructor
     }
 
 
-    public static OnboardingFragment newInstance(String param1, String param2) {
-        OnboardingFragment fragment = new OnboardingFragment();
+    public static OnBoardingFragment newInstance(String param1, String param2) {
+        OnBoardingFragment fragment = new OnBoardingFragment();
 
         return fragment;
     }
