@@ -12,9 +12,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-
 import es.travelworld.ejercicio7_viewpager.databinding.ActivityLoginBinding;
 import es.travelworld.ejercicio7_viewpager.domain.User;
 import es.travelworld.ejercicio7_viewpager.fragments.LoginErrorFragment;
@@ -99,9 +96,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
     }
 
     @Override
-    public void registerJoinButton(User user) {
-        this.user = user;
+    public void registerJoinButton() {
         startLoginFragment();
-        Snackbar.make(binding.getRoot(), "Nombre: " + user.getName() + "  Apellidos: " + user.getLastname() + "  Edad:" + user.getAgeGroup(), BaseTransientBottomBar.LENGTH_LONG).show();
     }
 }

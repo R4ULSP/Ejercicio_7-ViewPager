@@ -1,5 +1,6 @@
 package es.travelworld.ejercicio7_viewpager.fragments;
 
+import static es.travelworld.ejercicio7_viewpager.domain.References.FRAGMENT_RESULT;
 import static es.travelworld.ejercicio7_viewpager.domain.References.KEY_USER;
 import static es.travelworld.ejercicio7_viewpager.domain.References.LOGIN_ERROR;
 import static es.travelworld.ejercicio7_viewpager.domain.References.LOGIN_SUCCESSFUL;
@@ -54,6 +55,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         if (getArguments() != null) {
             user = getArguments().getParcelable(KEY_USER);
         }
+        getParentFragmentManager().setFragmentResultListener(FRAGMENT_RESULT, this, (requestKey, result) -> {
+            if(result.getParcelable(KEY_USER) != null){
+                user = result.getParcelable(KEY_USER);
+                Snackbar.make(binding.getRoot(), "Nombre: " + user.getName() + "  Apellidos: " + user.getLastname() + "  Edad:" + user.getAgeGroup(), BaseTransientBottomBar.LENGTH_LONG).show();
+            }
+        });
     }
 
 

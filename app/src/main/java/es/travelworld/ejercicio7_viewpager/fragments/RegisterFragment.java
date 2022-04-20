@@ -1,5 +1,6 @@
 package es.travelworld.ejercicio7_viewpager.fragments;
 
+import static es.travelworld.ejercicio7_viewpager.domain.References.FRAGMENT_RESULT;
 import static es.travelworld.ejercicio7_viewpager.domain.References.KEY_USER;
 
 import android.content.Context;
@@ -37,7 +38,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     private OnClickItemRegisterFragment listener;
 
     public interface OnClickItemRegisterFragment{
-        void registerJoinButton(User user);
+        void registerJoinButton();
     }
 
     public RegisterFragment() {
@@ -173,7 +174,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
             user.setLastname(Objects.requireNonNull(binding.registerInputLastname.getText()).toString());
             user.setAgeGroup(binding.registerInputAge.getText().toString());
 
-            listener.registerJoinButton(user);
+            Bundle result = new Bundle();
+            result.putParcelable(KEY_USER,user);
+            getParentFragmentManager().setFragmentResult(FRAGMENT_RESULT,result);
+
+            listener.registerJoinButton();
         }
     }
 
