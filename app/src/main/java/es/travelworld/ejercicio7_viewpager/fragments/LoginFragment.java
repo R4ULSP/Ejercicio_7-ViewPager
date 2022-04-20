@@ -34,27 +34,20 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public interface OnClickItemLoginFragment {
         void loginButton(User user, String code);
 
-        void loginNewAccountButton(User user);
+        void loginNewAccountButton();
     }
 
     public LoginFragment() {
         // Required empty public constructor
     }
 
-    public static LoginFragment newInstance(User receivedUser) {
-        LoginFragment loginFragment = new LoginFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(KEY_USER, receivedUser);
-        loginFragment.setArguments(bundle);
-        return loginFragment;
+    public static LoginFragment newInstance() {
+        return new LoginFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            user = getArguments().getParcelable(KEY_USER);
-        }
         getParentFragmentManager().setFragmentResultListener(FRAGMENT_RESULT, this, (requestKey, result) -> {
             if(result.getParcelable(KEY_USER) != null){
                 user = result.getParcelable(KEY_USER);
@@ -137,14 +130,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         if (binding.loginForgotPasswordButton.equals(view)) {
             Snackbar.make(binding.getRoot(), R.string.wip_feature, BaseTransientBottomBar.LENGTH_LONG).show();
         } else if (binding.loginNewAccountButton.equals(view)) {
-            listener.loginNewAccountButton(user);
+            listener.loginNewAccountButton();
         } else if (binding.loginButton.equals(view)) {
             login();
         }
     }
 
     private void login() {
-        if (Objects.requireNonNull(binding.loginInputPassword.getText()).toString().equals(user.getPassword()) && Objects.requireNonNull(binding.loginInputUser.getText()).toString().equals(user.getName())) {
+        if (user != null && Objects.requireNonNull(binding.loginInputPassword.getText()).toString().equals(user.getPassword()) && Objects.requireNonNull(binding.loginInputUser.getText()).toString().equals(user.getName())) {
             listener.loginButton(user, LOGIN_SUCCESSFUL);
         } else {
             listener.loginButton(user, LOGIN_ERROR);

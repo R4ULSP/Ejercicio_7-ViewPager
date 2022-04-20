@@ -21,7 +21,6 @@ import es.travelworld.ejercicio7_viewpager.fragments.RegisterFragment;
 public class LoginActivity extends AppCompatActivity implements LoginFragment.OnClickItemLoginFragment, RegisterFragment.OnClickItemRegisterFragment {
 
     private ActivityLoginBinding binding;
-    private User user;
     private String currentFragment;
 
     @Override
@@ -29,12 +28,6 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        user = new User();
-        if(getIntent().getParcelableExtra(KEY_USER) != null){
-            user = getIntent().getParcelableExtra(KEY_USER);
-        }
-
 
         startLoginFragment();
     }
@@ -45,21 +38,20 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(binding.loginFragmentFrame.getId(),
-                        fragment != null ? fragment : LoginFragment.newInstance(user),
+                        fragment != null ? fragment : LoginFragment.newInstance(),
                         LOGIN_FRAGMENT)
                 .addToBackStack(null)
                 .commitAllowingStateLoss();
         currentFragment = LOGIN_FRAGMENT;
-
     }
 
-    private void startRegisterFragment(User user) {
+    private void startRegisterFragment() {
         RegisterFragment fragment = (RegisterFragment) getSupportFragmentManager().findFragmentByTag(REGISTER_FRAGMENT);
 
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(binding.loginFragmentFrame.getId(),
-                        fragment != null ? fragment : RegisterFragment.newInstance(user),
+                        fragment != null ? fragment : RegisterFragment.newInstance(),
                         REGISTER_FRAGMENT)
                 .addToBackStack(null)
                 .commitAllowingStateLoss();
@@ -68,11 +60,10 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         if (currentFragment.equals(LOGIN_FRAGMENT)) {
-            Intent intent = new Intent(this,MainActivity.class);
-            startActivity(intent);
-        }else{
+            super.onBackPressed();
+            finish();
+        } else {
             startLoginFragment();
         }
     }
@@ -83,6 +74,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
             Intent intent = new Intent(this, es.travelworld.ejercicio7_viewpager.HomeActivity.class);
             intent.putExtra(KEY_USER, user);
             startActivity(intent);
+            finish();
         } else {
             FragmentManager fragmentManager = getSupportFragmentManager();
             LoginErrorFragment loginErrorFragment = LoginErrorFragment.newInstance();
@@ -91,8 +83,8 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
     }
 
     @Override
-    public void loginNewAccountButton(User user) {
-        startRegisterFragment(user);
+    public void loginNewAccountButton() {
+        startRegisterFragment();
     }
 
     @Override

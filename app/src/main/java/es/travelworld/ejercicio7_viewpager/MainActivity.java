@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements OnBoardingFragmen
     public void onBackPressed() {
         if (binding.viewPager.getCurrentItem() == 0) {
             super.onBackPressed();
+            finish();
         } else {
             binding.viewPager.setCurrentItem(binding.viewPager.getCurrentItem() - 1);
         }
@@ -69,8 +70,6 @@ public class MainActivity extends AppCompatActivity implements OnBoardingFragmen
     }
 
     private class MainActivityFragmentStateAdapter extends FragmentStateAdapter {
-
-        //TODO: Gestión de la pila de fragmentos
 
         public MainActivityFragmentStateAdapter(MainActivity mainActivity) {
             super(mainActivity);

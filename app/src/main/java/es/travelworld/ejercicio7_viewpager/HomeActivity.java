@@ -75,5 +75,6 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.putExtra(KEY_USER, user);
         startActivity(intent);
+        finish();
     }
 }

@@ -34,10 +34,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
 
     private FragmentRegisterBinding binding;
     private String[] ages;
-    private User user;
     private OnClickItemRegisterFragment listener;
 
-    public interface OnClickItemRegisterFragment{
+    public interface OnClickItemRegisterFragment {
         void registerJoinButton();
     }
 
@@ -45,19 +44,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
         // Required empty public constructor
     }
 
-    public static RegisterFragment newInstance(User receivedUser) {
-        RegisterFragment registerFragment = new RegisterFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(KEY_USER, receivedUser);
-        registerFragment.setArguments(bundle);
-        return registerFragment;
+    public static RegisterFragment newInstance() {
+        return new RegisterFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            user = getArguments().getParcelable(KEY_USER);
             ages = getArguments().getStringArray("ages");
         }
     }
@@ -79,7 +73,6 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
         binding.registerViewConditionsButton.setOnClickListener(this);
         binding.registerJoinButton.setOnClickListener(this);
         binding.registerInputAge.setOnItemClickListener(this);
-
 
         binding.registerInputName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -170,13 +163,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://developers.google.com/ml-kit/terms"));
             startActivity(intent);
         } else if (view.equals(binding.registerJoinButton)) {
+            User user = new User();
             user.setName(Objects.requireNonNull(binding.registerInputName.getText()).toString());
             user.setLastname(Objects.requireNonNull(binding.registerInputLastname.getText()).toString());
             user.setAgeGroup(binding.registerInputAge.getText().toString());
 
             Bundle result = new Bundle();
-            result.putParcelable(KEY_USER,user);
-            getParentFragmentManager().setFragmentResult(FRAGMENT_RESULT,result);
+            result.putParcelable(KEY_USER, user);
+            getParentFragmentManager().setFragmentResult(FRAGMENT_RESULT, result);
 
             listener.registerJoinButton();
         }
